@@ -1,4 +1,5 @@
 # Multi-function keypad
+![alt text](readme_images/keypad_render.png)
 This is a 4 switches keypad with a rotary encoder and an OLED display, it has 2 LEDs and uses QMK Firmware.
 
 I made it to learn a bit of this topic and I think it is perfect for general porpouse, everyday shortcuts and macros in gaming. Also in the little display you could write your name or a motd.
