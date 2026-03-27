@@ -1,38 +1,30 @@
 {
     "name": "Multi Function Keypad",
+    "vendorId": "0x6C61",
+    "productId": "0x4D46",
     "firmwareVersion": 0,
-    "keycodes": ["qmk_lighting"],
-    "matrix": { "rows": 1, "cols": 4 },
+    "keycodes": [
+        "qmk_lighting"
+    ],
+    "menus": [
+        "qmk_rgb_matrix"
+    ],
+    "matrix": {
+        "rows": 1,
+        "cols": 4
+    },
     "layouts": {
         "keymap": [
             [
-                { "x": 0, "y": 0 },
-                { "x": 1, "y": 0 },
-                { "x": 2, "y": 0 }
+                "0,0",
+                "0,1",
+                "0,2"
             ],
             [
-                { "x": 1, "y": 1 }
+                "0,3"
             ]
         ]
     },
-    "customMenus": [
-        {
-            "label": "OLED",
-            "content": [
-                {
-                    "label": "Scrolling Text",
-                    "content": [
-                        {
-                            "label": "Text",
-                            "type": "string",
-                            "options": [62],
-                            "content": ["id_custom_oled_text", 1, 1]
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
     "customKeycodes": [
         {
             "name": "Mute Toggle",
@@ -44,9 +36,5 @@
             "title": "Type text to display on OLED",
             "shortName": "OLED_IN"
         }
-    ],
-    "lighting": {
-        "extends": "rgb_matrix",
-        "underglowCount": 2
-    }
+    ]
 }

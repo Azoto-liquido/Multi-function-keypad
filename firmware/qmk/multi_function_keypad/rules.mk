@@ -1,9 +1,0 @@
-# MCU
-MCU = RP2040
-BOOTLOADER = rp2040
-
-# Build options
-ENCODER_ENABLE = yes
-OLED_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
-WS2812_DRIVER = vendor

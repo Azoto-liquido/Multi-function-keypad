@@ -17,6 +17,7 @@
 
 #include QMK_KEYBOARD_H
 #include "multi_function_keypad.h"
+#include "gpio.h"
 
 /* ── Custom keycodes ─────────────────────────────────────── */
 enum custom_keycodes {
@@ -54,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [_FN1]  = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)  },
+    [_FN1]  = { ENCODER_CCW_CW(RM_VALD, RM_VALU)  },
     [_FN2]  = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT)  },
     [_FN3]  = { ENCODER_CCW_CW(KC_PGDN, KC_PGUP)  },
 };
@@ -62,14 +63,14 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
 /* ── Init ────────────────────────────────────────────────── */
 void keyboard_post_init_user(void) {
-    setPinInputHigh(GP26);   /* encoder button S1, internal pull-up */
+    gpio_set_pin_input_high(GP26);   /* encoder button S1, internal pull-up */
 }
 
 /* ── Encoder button polling on GP26 ─────────────────────── */
 static bool enc_btn_prev = true;
 
 void matrix_scan_user(void) {
-    bool enc_btn = readPin(GP26);
+    bool enc_btn = gpio_read_pin(GP26);
     if (enc_btn_prev && !enc_btn) {
         /* Falling edge = button pressed */
         is_muted = !is_muted;

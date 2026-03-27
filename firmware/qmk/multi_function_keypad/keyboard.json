@@ -7,13 +7,16 @@
         "pid": "0x4D46",
         "device_version": "0.0.1"
     },
+    "features": {
+        "encoder": true,
+        "oled": true,
+        "rgb_matrix": true
+    },
     "processor": "RP2040",
     "bootloader": "rp2040",
-    "board": "SEEED_XIAO_RP2040",
     "matrix_pins": {
-        "direct": ["GP1", "GP2", "GP4", "GP3"]
+        "direct": [["GP1", "GP2", "GP4", "GP3"]]
     },
-    "diode_direction": "NO_MATRIX",
     "encoder": {
         "rotary": [
             {
@@ -24,7 +27,7 @@
         ]
     },
     "rgb_matrix": {
-        "driver":    "ws2812",
+        "driver": "ws2812",
         "led_count": 2,
         "animations": {
             "solid_color":         true,
@@ -38,8 +41,7 @@
     },
     "ws2812": {
         "pin":    "GP0",
-        "driver": "vendor",
-        "rgbw":   true
+        "driver": "vendor"
     },
     "layouts": {
         "LAYOUT": {

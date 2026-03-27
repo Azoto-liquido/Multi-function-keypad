@@ -13,10 +13,6 @@
 /* -- Encoder button ----------------------------------------- */
 #define ENCODER_SWITCH_PIN GP26
 
-/* -- SK6812MINI RGBW ---------------------------------------- */
-#define WS2812_DI_PIN        GP0
-#define RGB_MATRIX_LED_COUNT 2
-
 /* Limit brightness to stay within 500mA USB budget */
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200
 #define RGB_MATRIX_DEFAULT_MODE       RGB_MATRIX_BREATHING
