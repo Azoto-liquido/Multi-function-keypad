@@ -1,10 +1,10 @@
 # Multi Function Keypad – QMK Firmware
 
-QMK firmware for a custom keyboard based on the **XIAO RP2040**, featuring:
-- 4 Cherry MX switches (SW1–SW4)
-- EC11 rotary encoder with push button (SW5)
-- SSD1306 OLED display 128×64 (I2C)
-- 2 SK6812MINI RGBW LEDs (underglow)
+QMK firmware for a custom keyboard based on the XIAO RP2040, featuring:
+- 4 Cherry MX switches
+- EC11 rotary encoder
+- SSD1306 OLED display 128×64
+- 2 SK6812MINI RGBW LEDs
 
 ---
 
@@ -83,7 +83,7 @@ The display renders 4 rows (6×8 font, 21 columns):
 
 **Method 3 – Compile-time default in `config.h`:**
 ```c
-#define OLED_SCROLL_TEXT "Your text here  "
+#define OLED_SCROLL_TEXT "Insert text..."
 ```
 
 ### SK6812MINI LEDs

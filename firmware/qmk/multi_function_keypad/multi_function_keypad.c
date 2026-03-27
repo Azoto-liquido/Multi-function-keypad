@@ -1,16 +1,16 @@
 #include "quantum.h"
 #include "multi_function_keypad.h"
 
-/* ── Mute state ─────────────────────────────────────────────── */
+/* -- Mute state --------------------------------------------- */
 bool is_muted = false;
 
-/* ════════════════════════════════════════════════════════════
+/* ------------------------------------------------------------
  *  RGB MATRIX – physical LED positions
  *  2 SK6812MINI LEDs:
  *    LED 0 = D2  (first in chain: GP0 → D2 → D1)
  *    LED 1 = D1  (second in chain)
  *  Approximate positions on PCB (QMK units: 0-224 x, 0-64 y)
- * ════════════════════════════════════════════════════════════ */
+ * ------------------------------------------------------------ */
 #ifdef RGB_MATRIX_ENABLE
 led_config_t g_led_config = {
     /* Key matrix → LED index
@@ -31,14 +31,14 @@ led_config_t g_led_config = {
 };
 #endif
 
-/* ════════════════════════════════════════════════════════════
+/* ------------------------------------------------------------
  *  OLED SSD1306 128×64
  *  4-row layout (6×8 font, 21 columns):
  *    Row 0 – Fixed title
  *    Row 1 – Active layer
  *    Row 2 – Volume / mute status
  *    Row 3 – Custom scrolling text
- * ════════════════════════════════════════════════════════════ */
+ * ------------------------------------------------------------ */
 #ifdef OLED_ENABLE
 
 static char     scroll_buf[64] = OLED_SCROLL_TEXT;
@@ -52,13 +52,13 @@ void oled_set_scroll_text(const char *text) {
     scroll_timer  = 0;
 }
 
-/* ── Row 0: title ────────────────────────────────────────── */
+/* -- Row 0: title ----------------------------------------- */
 static void render_header(void) {
     oled_set_cursor(0, 0);
     oled_write_P(PSTR(" Multi  Keypad  "), false);
 }
 
-/* ── Row 1: active layer ─────────────────────────────────── */
+/* -- Row 1: active layer ---------------------------------- */
 static void render_layer(void) {
     oled_set_cursor(0, 1);
     oled_write_P(PSTR("Layer: "), false);
@@ -66,7 +66,7 @@ static void render_layer(void) {
     oled_write_P(PSTR("              "), false);
 }
 
-/* ── Row 2: volume status ────────────────────────────────── */
+/* -- Row 2: volume status ---------------------------------- */
 static void render_volume(void) {
     oled_set_cursor(0, 2);
     if (is_muted) {
@@ -76,7 +76,7 @@ static void render_volume(void) {
     }
 }
 
-/* ── Row 3: scrolling text ───────────────────────────────── */
+/* -- Row 3: scrolling text ---------------------------------- */
 #define OLED_COLS 21
 
 static void render_scroll(void) {
@@ -95,7 +95,7 @@ static void render_scroll(void) {
             oled_write_char(' ', false);
     } else {
         /* Long text: scroll right to left */
-        uint8_t total = len + 3;  /* text + 3 spaces separator */
+        uint8_t total = len + 3;
 
         char visible[OLED_COLS + 1];
         for (uint8_t i = 0; i < OLED_COLS; i++) {
@@ -113,7 +113,7 @@ static void render_scroll(void) {
     }
 }
 
-/* ── Main OLED task ──────────────────────────────────────── */
+/* -- Main OLED task ----------------------------------------- */
 bool oled_task_kb(void) {
     if (!oled_task_user()) return false;
     render_header();
