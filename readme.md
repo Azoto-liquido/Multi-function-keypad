@@ -35,4 +35,4 @@ The firmware uses QMK Firmware and is fully configurable with VIA.
 - The 4 keys can be assigned to any key with VIAA (https://caniusevia.com/).
 - Holding down the 4th key will activate another layer in which the keys can be assigned to any other function.
 - The OLED display can be assigned to display any text (Always in VIA).
-- The 2 LEDs can display any color (This is done in VIA also).
+- The 2 LEDs can display any color (This is also done in VIA).
